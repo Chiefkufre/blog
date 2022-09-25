@@ -6,21 +6,11 @@ from .models import ToDoList, Items
 
 def index(response):
 
-    return HttpResponse("something nice")
+    return render(response, 'main/base.html', {})
 
 
-def intro(response, id):
+def home(response):
 
-    # ls = ToDoList.objects.get(id=id)
-    items = Items.objects.get(id=id)
-    ls = ToDoList.objects.get(id=id)
-
-    return JsonResponse({
-
-        "Items": items.text,
-        "Status": items.complete,
-        "name": ls.name
-
-    })
+    return render(response, 'main/home.html', {})
 
     # return HttpResponse("<h1>%s</h1><h2>%s</h2><ul>%s</ul>" %(items.text, items.complete, ls.name))
