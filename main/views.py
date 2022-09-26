@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-
 from .models import ToDoList, Items
+from .forms import CreateNewList
 
 
 def index(response):
@@ -9,8 +9,15 @@ def index(response):
     return render(response, 'main/base.html', {})
 
 
-def home(response):
+def home(response, id):
 
-    return render(response, 'main/home.html', {})
+    ls = ToDoList.objects.get(id=id)
 
-    # return HttpResponse("<h1>%s</h1><h2>%s</h2><ul>%s</ul>" %(items.text, items.complete, ls.name))
+    items = ls.items_set.all()
+
+    return render(response, 'main/home.html', {"items": items, "ls": ls})
+
+
+def create(response):
+    form = CreateNewList()
+    return render(response, "main/create.html", {"form":form})

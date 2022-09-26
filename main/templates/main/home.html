@@ -1,2 +1,18 @@
 {% extends "main/base.html" %}
+{% block title %} <title>Home</title> {% endblock %}
 
+{% block content %}
+      <ul> {% for item in items %}
+        {% if item.complete == True %}
+            <li><s>{{ item.text }}</s></li>
+        {% else %}
+         <li>{{ item.text }}</li>
+          {% endif %}
+        {% endfor %}
+        </ul> 
+        <p>{{ ls.name }} </p>
+        {% endblock  %}
+
+        {% block footer %}
+
+         {% endblock  %}

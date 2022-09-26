@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+{% block title %} <title>create</title> {% endblock %}
+
+{% block content %}
+    <form action="/create/", method="post">
+    {{form.as_p}}
+         <button type="button">Submit</button> 
+    </form>
+{% endblock content %}
