@@ -55,7 +55,7 @@ def list_view(response, id):
         elif response.POST.get("deleteItem"):
             for item in items:
                 if response.POST.get("c" + str(item.id)) == "clicked":
-                    ls.items_set.delete()
+                    ls.items_set.delete( )
                 
 
 
